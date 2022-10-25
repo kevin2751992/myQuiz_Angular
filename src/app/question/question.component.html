@@ -1,0 +1,12 @@
+
+<div class="content-wrapper-container">
+  <div class="center-container">
+      <p>{{"test"}}</p>
+      <h1>{{"test"}}</h1>
+  </div>
+  <div>
+    <mat-label>First name</mat-label>
+    <input matInput (cdkAutofill)="userAnswer = $event.isAutofilled"/>
+  </div>
+  <button class="default-button light-theme" mat-button matStepperNext>Start the Survey</button>
+</div>
