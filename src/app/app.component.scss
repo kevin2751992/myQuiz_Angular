@@ -1,0 +1,68 @@
+/* MOBILE Styling*/
+
+// Override MUI Styling
+:host ::ng-deep .mat-horizontal-stepper-header-container {
+  display: none;
+}
+:host ::ng-deep.mat-horizontal-content-container{
+  margin: auto;
+  width: 100%;
+  max-width: min(100%,1200px);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translatey(-50%);
+  transform: translateY(-50%);
+  border: solid red 1px;
+  padding: 15px;
+  box-sizing: border-box;
+
+}
+.mat-horizontal-stepper-header-container {
+  display: none !important;
+}
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.center-container{
+  display: flex;
+  flex-direction: column;
+
+  .mat-button{
+    min-width: 35%;
+    margin: auto;
+  }
+}
+
+
+.stepper {
+  background-color: black;
+  color: white;
+  border: solid grey 1px;
+  border-radius: 5px;
+  min-height: 100vh;
+  position: relative;
+
+  .content-wrapper-container {
+    margin: auto;
+    width: fit-content;
+
+  }
+}
+@media (min-width: 1200px) {
+  :host ::ng-deep.mat-horizontal-content-container{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -ms-transform: translatey(-50%);
+    transform: translateX(-50%);
+    padding: 0;
+  }
+
+}
+

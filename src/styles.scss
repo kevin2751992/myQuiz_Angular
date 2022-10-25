@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+
+//@import shared styles here
+@import "./src/shared/styles/input/button.scss";
+
+html, body { height: 100%; font-size: 15px }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: var(--primary-surface) }
+
+h1{
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-b);
+}
+h2{
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-b);
+}
+h3{
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-m);
+}
+:root{
+  //Fontsize
+  --fs-article: 1rem;
+  --fs-h1: 1.6rem;
+  --fs-h2: 1.3rem;
+  --fs-h3: 1rem;
+  --fs-p: 1rem;
+  //Iconsize
+  --is-m: 32px;
+  --is-l: 44px;
+  //--Fontweight
+  --fw-n: 300;
+  --fw-m: 400;
+  --fw-b: 700;
+  //LineHeight
+  --lh-n: 1;
+  --lh-md: 1.3;
+  --lh-lg: 2;
+  //Letterspacing
+  --ls-lg: 0rem;
+  //primary surfaces and text colors
+  --primary-surface:black;
+  --secondary-surface:white;
+  --onPrimary:white;
+  --onSecondary:black;
+  //accent colors
+  --accent-color: #003087;
+  //error and warning colors
+  --error-color: #f00;
+  //--Spacing
+  --spacer: 1.25rem;
+  --spacerMd: 2.5rem;
+  --spacerLg: 3.75rem;
+}
+
+.light-theme{
+  background-color: var(--secondary-surface);
+  color:var(--onSecondary);
+}
+.mat-button{
+  &.default-button{
+    padding-block: 5px;
+    border-radius: 0;
+    min-width: 120px;
+    text-transform: uppercase;
+  }
+  &.light-theme{
+    background-color: var(--secondary-surface);
+    color:var(--onSecondary);
+  }
+}
+.center-container{
+
+}
+.text-center{
+  text-align: center;
+}
+main{
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  padding:15px
+}

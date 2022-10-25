@@ -1,0 +1,16 @@
+//@import "src/styles.scss"; // Main styles and custom css Props
+
+
+//Override Mui Button with custom styles. Just append needed classes to Buttons
+.mat-button{
+  &.default-button{
+    padding-block: 5px;
+    border-radius: 0;
+    min-width: 120px;
+    text-transform: uppercase;
+  }
+  &.light-theme{
+    background-color: var(--secondary-surface);
+    color:var(--onSecondary);
+  }
+}

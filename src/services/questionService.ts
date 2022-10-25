@@ -1,0 +1,34 @@
+import {IQuestion} from "../app/question/iquestion";
+// @ts-ignore
+import mockup from "./mockupQuestions.json";
+
+export class QuestionService{
+    API={
+    questionEndpoint:"https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple"
+  }
+  /*
+  @Fetch Questions from Sample Url
+  returns [Questions,Error]
+   */
+  public async fetchQuestions():Promise<[(IQuestion[]|undefined),any]>{
+      try{
+        let response= await fetch(this.API.questionEndpoint,{
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        let resultAsJSon= await response.json(); // could be used as Questions -> mapping is required!
+        let questions=[...mockup]
+        return [questions,undefined]
+
+      }catch (e) {
+        return [undefined,e]
+        console.error("Error fetching Questions",e)
+      }
+
+
+  }
+}
+
+

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "title": "Who are you",
+      "question": "Please enter your name.",
+      "type": "TEXTFIELD",
+      "selectionMode": "undefined",
+      "correctIndex": "undefined",
+      "answers": []
+    },
+    {
+      "title": "Qustion 1",
+      "question": "How often do you visit this website?",
+      "type": "MULTIPLE_CHOICE",
+      "selectionMode": "SINGLE",
+      "correctIndex": "undefined",
+      "answers": [
+        {
+          "value": "Often",
+          "points": 5
+        },{
+          "value": "Rarely",
+          "points": 3
+        },
+        {
+          "value": "Never",
+          "points": 0
+        }
+      ]
+    }
+
+  ]
+}
+
