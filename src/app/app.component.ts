@@ -51,12 +51,16 @@ export class AppComponent {
 
   ngOnInit() {
 
-    this.store.dispatch(new Questions.FetchQuestions()).subscribe(result=>{
-      console.log("q",result);
-      this.questions=result;
+    this.store.dispatch(new Questions.FetchQuestions).subscribe(result=>{
+
+      this.store.dispatch(new Questions.CalculateMaxPoints)
     })
-    this.store.dispatch(new Questions.SetQuestions(this.questions))
   }
 
+  updateUserPoints() {
+    this.store.dispatch(new Questions.CalculateUserPoints).subscribe(result=>{
+      console.log("updated",result)
+    })
+  }
 }
 

@@ -7,6 +7,7 @@ export interface IQuestion {
   selectionMode:SelectionModeEnum;
   correctIndex?:number;
   answers?:IAnswer[];
+  maxPoints:number;
   userAnswer?:IAnswer;
 }
 export enum QuestionTypeEnum{

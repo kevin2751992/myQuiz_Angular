@@ -7,14 +7,16 @@
       "hint": "John Doe",
       "selectionMode": "undefined",
       "correctIndex": "undefined",
+      "maxPoints": 0,
       "answers": []
     },
     {
-      "title": "Qustion 1",
+      "title": "Question 2",
       "question": "How often do you visit this website?",
       "type": "SINGLE_RADIO_SELECTION",
       "selectionMode": "SINGLE",
       "correctIndex": "undefined",
+      "maxPoints": 5,
       "answers": [
         {
           "value": "Often",
@@ -28,8 +30,28 @@
           "points": 0
         }
       ]
+    },
+    {
+      "title": "Question 2",
+      "question": "How often do you visit this website?",
+      "type": "MULTIPLE_CHECKBOX_CHOICE",
+      "selectionMode": "Multi",
+      "correctIndex": "undefined",
+      "maxPoints": 6,
+      "answers": [
+        {
+          "value": "Option 1",
+          "points": 2
+        },{
+          "value": "Option 2",
+          "points": 2
+        },
+        {
+          "value": "Option 3",
+          "points": 2
+        }
+      ]
     }
-
   ]
 }
 

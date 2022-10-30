@@ -1,4 +1,3 @@
-
 <mat-stepper id="angular-quiz" linear #stepper>
   <mat-step>
     <div class="content-wrapper-container">
@@ -18,29 +17,29 @@
   <ng-container *ngFor="let question of $questions|async, let i=index">
     <mat-step>
       <div class="col-container alignItems-center spacerMd">
-            <app-question [question]="question"></app-question>
-            <button class="default-button light-theme" mat-button matStepperNext>
-              <div class="row-container center spacerSm">
-                <span>Next</span>
-                <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
-              </div>
-            </button>
-            <button class="default-button" mat-button matStepperPrevious>
-              <div class="row-container center">
-                <mat-icon class="next-icon" aria-label="Example home icon">arrow_back</mat-icon>
-                <span style="font-size: 10px">Back</span>
-              </div>
-            </button>
+        <app-question [question]="question"></app-question>
+        <button class="default-button light-theme" (click)="updateUserPoints()" mat-button matStepperNext>
+          <div class="row-container center spacerSm">
+            <span>Next</span>
+            <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
+          </div>
+        </button>
+        <button class="default-button" mat-button matStepperPrevious>
+          <div class="row-container center">
+            <mat-icon class="next-icon" aria-label="Example home icon">arrow_back</mat-icon>
+            <span style="font-size: 10px">Back</span>
+          </div>
+        </button>
 
       </div>
-  </mat-step>
+    </mat-step>
   </ng-container>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+    <div class="col-container alignItems-center spacerMd">
+      <app-resultdashboard style="width: 100%"></app-resultdashboard>
+      <div class="row-container center">
+        <button class="default-button light-theme" mat-button (click)="stepper.reset()">Start New</button>
+      </div>
     </div>
   </mat-step>
 </mat-stepper>

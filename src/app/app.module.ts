@@ -14,6 +14,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -21,6 +22,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { QuestionComponent } from './question/question.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppState } from './state/app.state';
+import { ResultdashboardComponent } from './resultdashboard/resultdashboard.component';
 
 
 
@@ -29,6 +31,7 @@ import { AppState } from './state/app.state';
     AppComponent,
     QuestionComponent,
     DashboardComponent,
+    ResultdashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { AppState } from './state/app.state';
     MatRadioModule,
     TextFieldModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

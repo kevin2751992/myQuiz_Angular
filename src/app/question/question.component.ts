@@ -34,21 +34,18 @@ export class QuestionComponent implements OnInit {
   isSINGLE_RADIO_SELECTION(type:QuestionTypeEnum):boolean{
     return type===QuestionTypeEnum.SINGLE_RADIO_SELECTION
   }
+  isMULTIPLE_CHECKBOX_CHOICE(type:QuestionTypeEnum):boolean{
+    return type===QuestionTypeEnum.MULTIPLE_CHECKBOX_CHOICE
+  }
   ngOnChanges(){
-    this.$questions?.subscribe(result=>{
+  /*  this.$questions?.subscribe(result=>{
       console.log("questions were updated",result)
       //this.question=result[this.index];
 
-    })
+    })*/
   }
 
   ngOnInit(): void {
-    console.log("q",this.question)
-    this.$questions?.subscribe(result=>{
-      console.log("questions were updated",result)
-
-
-    })
   }
 
 

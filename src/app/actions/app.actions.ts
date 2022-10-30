@@ -18,6 +18,19 @@ export namespace Questions{
     static readonly type = "[API] fetch questions ";
     constructor() {}
   }
+
+  export class CalculateUserPoints{
+    static readonly type = "[APP] calculate result ";
+    constructor() {}
+  }
+  export class CalculateMaxPoints{
+    static readonly type = "[APP] calculate max Points ";
+    constructor() {}
+  }
+  export class GetResult{
+    static readonly type = "[APP] get result ";
+    constructor() {}
+  }
 }
 
 
