@@ -1,9 +1,10 @@
 {
   "questions": [
     {
-      "title": "Who are you",
+      "title": "Who are you?",
       "question": "Please enter your name.",
       "type": "TEXTFIELD",
+      "hint": "John Doe",
       "selectionMode": "undefined",
       "correctIndex": "undefined",
       "answers": []
@@ -11,7 +12,7 @@
     {
       "title": "Qustion 1",
       "question": "How often do you visit this website?",
-      "type": "MULTIPLE_CHOICE",
+      "type": "SINGLE_RADIO_SELECTION",
       "selectionMode": "SINGLE",
       "correctIndex": "undefined",
       "answers": [

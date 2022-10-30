@@ -16,7 +16,6 @@
   border: solid red 1px;
   padding: 15px;
   box-sizing: border-box;
-
 }
 .mat-horizontal-stepper-header-container {
   display: none !important;
@@ -30,9 +29,6 @@
 }
 
 .center-container{
-  display: flex;
-  flex-direction: column;
-
   .mat-button{
     min-width: 35%;
     margin: auto;

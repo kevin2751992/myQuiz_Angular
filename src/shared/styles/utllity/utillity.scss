@@ -1,0 +1,39 @@
+//Container
+.col-container {
+  &.alignItems-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacer);
+    &.spacer{
+      gap:var(--spacer)
+    }
+    &.spacerMd{
+      gap:var(--spacerMd)
+    }
+  }
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+  &.spacerSm{
+    gap:10px
+  }
+  &.spacer{
+    gap:var(--spacer)
+  }
+  &.spacerMd{
+    gap:var(--spacerMd)
+  }
+}
+
+//Text
+.text-center {
+  text-align: center;
+}
+

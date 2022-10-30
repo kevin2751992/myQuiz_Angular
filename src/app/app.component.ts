@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
 
-import {FormBuilder, Validators} from "@angular/forms";
+import { Component } from '@angular/core';
+import {Actions, Select, Selector, Store} from '@ngxs/store';
+import {Questions} from "./actions/app.actions";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {QuestionService} from "../services/questionService";
-import {BehaviorSubject} from "rxjs";
-import {IQuestion} from "./question/iquestion";
+import {AppState, AppStateModel} from "./state/app.state";
+import {Observable} from "rxjs";
+import {IQuestion} from "./models/questions.model";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,43 +16,46 @@ import {IQuestion} from "./question/iquestion";
 export class AppComponent {
   title = 'angular-quiz';
   questionService=new QuestionService();
+  questions:IQuestion[]=[];
+  stepgrps: FormGroup<{firstCtrl: FormControl<string | null>}>[]=[];
+  currentStep = 0;
   //State
-  private readonly _questionsSrc = new BehaviorSubject<IQuestion[]|undefined>([]);
-  readonly questions$ = this._questionsSrc.asObservable(); // can be exposed -> todo
+  @Select() app$: Observable<AppState>| undefined
+  @Select(AppState.getQuestions) $questions: Observable<IQuestion[]>|undefined;
 
 
+  mainFormGroup = this._formBuilder.group({
+    formCount: 1,
+    stepData: this._formBuilder.array([
+      this._formBuilder.group({
+        name: ["", Validators.required]
+      })
+    ])
+  });
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    "firstCtrl": ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    "secondCtrl": ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
-    thirdCtrl: ['', Validators.required],
+    "thirdCtrl": ['', Validators.required],
   });
-  isLinear = false;
 
-  // Get last value without subscribing to the puppies$ observable (synchronously).
-  public getQuestionState(): IQuestion[] | undefined{
-    return this._questionsSrc.getValue();
-  }
 
-  private _setQuestionsState(questions: IQuestion[]): void {
-    this._questionsSrc.next(questions);
-  }
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder,private store: Store ,actions$:Actions) {
 
   }
-  private async getQuestions(){
-    let [questions,error] = await this.questionService.fetchQuestions();
-    if(questions){
-      this._setQuestionsState(questions)
-    }
-  }
 
-  ngOnInit(){
-    this.getQuestions();
+
+  ngOnInit() {
+    this.store.dispatch(new Questions.FetchQuestions()).subscribe(result=>{
+      console.log("q",result);
+      this.questions=result;
+    })
+
   }
 
 }
+

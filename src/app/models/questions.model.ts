@@ -2,13 +2,16 @@ export interface IQuestion {
   type:QuestionTypeEnum;
   title:string;
   question:string;
+  hint?:string;
+  label?:string;
   selectionMode:SelectionModeEnum;
   correctIndex?:number;
   answers?:IAnswer[];
   userAnswer?:IAnswer;
 }
 export enum QuestionTypeEnum{
-  MULTIPLE_CHOICE="MULTIPLE_CHOICE",
+  MULTIPLE_CHECKBOX_CHOICE="MULTIPLE_CHECKBOX_CHOICE",
+  SINGLE_RADIO_SELECTION="SINGLE_RADIO_SELECTION",
   TEXTFIELD="TEXTFIELD",
   DROPDOWN="DROPDOWN"
 }

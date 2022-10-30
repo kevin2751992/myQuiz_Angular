@@ -1,18 +1,26 @@
-.center-container{
-  display: flex;
-  flex-direction: column;
-  h1{
-    font-size: 44px;
-    line-height: 3rem;
+.question-container{
+  .label{
+    font-size: var(--fs-h3);
+  }
+  input{
+    background-color: var(--primary-surface);
+    border:none;
+    border-bottom: 1px solid grey;
+    color:white;
+    width: 80%;
+  }
+  .mat-input-element::placeholder {
+    color:white
+  }
+  h2{
     text-align: center;
+
   }
   p{
     //margin-block: var(--spacer);
-    margin:15px 0 var(--spacerMd) 0px ;
+    margin:15px 0 var(--spacer) 0px ;
     text-align: center;
   }
-  .mat-button{
-    min-width: 35%;
-    margin: auto;
-  }
 }
+
+

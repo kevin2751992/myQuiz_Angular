@@ -1,29 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
 //@import shared styles here
 @import "./src/shared/styles/input/button.scss";
+@import "shared/styles/utllity/utillity.scss";
+/*$my-custom-typography-config: mat.define-typography-config(
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline:  mat.define-typography-level(24px, 32px, 400),
+  // ...
+);
+@include mat.core($my-custom-typography-config);*/
 
 html, body { height: 100%; font-size: 15px }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: var(--primary-surface) }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: white; background-color: var(--primary-surface) }
+main{
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  padding:15px
+}
+#angular-quiz{
 
-h1{
-  font-size: var(--fs-h1);
-  font-weight: var(--fw-b);
-}
-h2{
-  font-size: var(--fs-h2);
-  font-weight: var(--fw-b);
-}
-h3{
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-m);
+  h1{
+    font-size: var(--fs-h1)!important;;
+    font-weight: var(--fw-b)!important;;
+  }
+  h2{
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-b);
+  }
+  h3{
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-m);
+  }
 }
 :root{
   //Fontsize
   --fs-article: 1rem;
-  --fs-h1: 1.6rem;
-  --fs-h2: 1.3rem;
-  --fs-h3: 1rem;
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
   --fs-p: 1rem;
   //Iconsize
   --is-m: 32px;
@@ -44,40 +63,20 @@ h3{
   --onPrimary:white;
   --onSecondary:black;
   //accent colors
-  --accent-color: #003087;
+  --accent-color: #ffffff;
   //error and warning colors
   --error-color: #f00;
+  --inactiv-color:#767676;
   //--Spacing
   --spacer: 1.25rem;
   --spacerMd: 2.5rem;
   --spacerLg: 3.75rem;
 }
 
-.light-theme{
-  background-color: var(--secondary-surface);
-  color:var(--onSecondary);
-}
-.mat-button{
-  &.default-button{
-    padding-block: 5px;
-    border-radius: 0;
-    min-width: 120px;
-    text-transform: uppercase;
-  }
-  &.light-theme{
-    background-color: var(--secondary-surface);
-    color:var(--onSecondary);
-  }
-}
-.center-container{
 
-}
-.text-center{
-  text-align: center;
-}
-main{
-  box-sizing: border-box;
-  margin-right: auto;
-  margin-left: auto;
-  padding:15px
+@media (min-width: 1200px) {
+  p{
+    //margin-block: var(--spacer);
+    margin:15px 0 var(--spacerLg) 0px ;
+  }
 }

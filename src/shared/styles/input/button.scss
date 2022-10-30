@@ -1,16 +1,59 @@
 //@import "src/styles.scss"; // Main styles and custom css Props
 
+#angular-quiz {
+  //Override Mui Button with custom styles. Just append needed classes to Buttons
+  .mat-button {
+    &.default-button {
+      padding-block: 5px;
+      border-radius: 0;
+      min-width: 140px;
+      line-height: 30px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
 
-//Override Mui Button with custom styles. Just append needed classes to Buttons
-.mat-button{
-  &.default-button{
-    padding-block: 5px;
-    border-radius: 0;
-    min-width: 120px;
-    text-transform: uppercase;
+    &.light-theme {
+      background-color: var(--secondary-surface);
+      color: var(--onSecondary);
+    }
   }
-  &.light-theme{
-    background-color: var(--secondary-surface);
-    color:var(--onSecondary);
+
+  //Radio Button
+  .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: var(--onPrimary);
+  }
+
+
+  .mat-radio-outer-circle {
+    border-color: var(--inactiv-color);
+
+  }
+
+  .mat-radio-checked .mat-accent {
+    background-color: red;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: var(--accent-color);
+  }
+
+
+  //Icons
+  .mat-icon {
+    &.next-icon {
+      color: white;
+      background: black;
+    }
+
+    &.prev-icon {
+      color: white;
+      background: black;
+      font-size: 10px;
+    }
+
+    border-radius: 14px;
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
   }
 }

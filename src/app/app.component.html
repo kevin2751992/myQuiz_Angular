@@ -1,29 +1,46 @@
-<div>
-  <mat-stepper class="stepper" [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <div class="content-wrapper-container">
-        <div class="center-container">
-          <app-dashboard></app-dashboard>
-          <button class="default-button light-theme" mat-button matStepperNext (click)="stepper.next()">Next</button>
-        </div>
+
+<mat-stepper id="angular-quiz" linear #stepper>
+  <mat-step>
+    <div class="content-wrapper-container">
+      <div class="col-container alignItems-center spacerMd">
+        <app-dashboard></app-dashboard>
+        <button class="default-button light-theme" mat-button matStepperNext>
+          <div class="row-container center spacerSm">
+            <span>Start the Survey</span>
+            <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
+          </div>
+
+        </button>
+
       </div>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Questions">
-      <div class="content-wrapper-container">
-        <div>
-          <app-question *ngIf="questions$" [questionObs]="questions$"></app-question>
-        </div>
+    </div>
+  </mat-step>
+  <ng-container *ngFor="let question of $questions|async, let i=index">
+    <mat-step>
+      <div class="col-container alignItems-center spacerMd">
+            <app-question [question]="question"></app-question>
+            <button class="default-button light-theme" mat-button matStepperNext>
+              <div class="row-container center spacerSm">
+                <span>Next</span>
+                <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
+              </div>
+            </button>
+            <button class="default-button" mat-button matStepperPrevious>
+              <div class="row-container center">
+                <mat-icon class="next-icon" aria-label="Example home icon">arrow_back</mat-icon>
+                <span style="font-size: 10px">Back</span>
+              </div>
+            </button>
+
       </div>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" label="Results" >
-      <div class="content-wrapper-container">
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-      </div>
-    </mat-step>
-  </mat-stepper>
-</div>
+  </mat-step>
+  </ng-container>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

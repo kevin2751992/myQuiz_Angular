@@ -1,12 +1,27 @@
 
-<div class="content-wrapper-container">
-  <div class="center-container">
-      <p>{{"test"}}</p>
-      <h1>{{"test"}}</h1>
+<div class="question-container">
+  <div *ngIf="question">
+    <div class="col-container alignItems-center spacerMd">
+        <p class="label">{{question.title}}</p>
+        <h2>{{question.question}}</h2>
+    </div>
+    <div *ngIf="isTypeTextField(question.type)" class="col-container alignItems-center spacerMd">
+      <!--QuestionType TextInput-->
+        <mat-label *ngIf="question.label" mat-label>First name</mat-label>
+        <input class="text-input" matInput placeholder="{{question.hint}}" (cdkAutofill)="userAnswer = $event.isAutofilled"/>
+    </div>
+
+      <!--QuestionType SingleSelection-->
+      <div *ngIf="isSINGLE_RADIO_SELECTION(question.type)" >
+        <mat-radio-group class="row-container center spacerMd" aria-label="Select an option" >
+          <mat-radio-button (change)="selected($event,option)" *ngFor="let option of question.answers, let i=index" value="{{i}}">{{option.value}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <!--QuestionType MultipleChoice-->
+      <div *ngIf="isTypeMULTIPLE_CHECKBOX_CHOICE(question.type)">
+        <mat-label *ngIf="question.label" mat-label>First name</mat-label>
+        <input class="text-input" matInput placeholder="{{question.hint}}" (cdkAutofill)="userAnswer = $event.isAutofilled"/>
+      </div>
   </div>
-  <div>
-    <mat-label>First name</mat-label>
-    <input matInput (cdkAutofill)="userAnswer = $event.isAutofilled"/>
-  </div>
-  <button class="default-button light-theme" mat-button matStepperNext>Start the Survey</button>
+
 </div>

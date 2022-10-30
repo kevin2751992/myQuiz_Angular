@@ -1,6 +1,7 @@
-import {IQuestion} from "../app/question/iquestion";
+
 // @ts-ignore
 import mockup from "./mockupQuestions.json";
+import {IQuestion} from "../app/models/questions.model";
 
 export class QuestionService{
     API={
@@ -11,20 +12,21 @@ export class QuestionService{
   returns [Questions,Error]
    */
   public async fetchQuestions():Promise<[(IQuestion[]|undefined),any]>{
+    console.log("start")
       try{
         let response= await fetch(this.API.questionEndpoint,{
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          }
+          method: "GET"
+
         })
         let resultAsJSon= await response.json(); // could be used as Questions -> mapping is required!
-        let questions=[...mockup]
+        let questions=[...mockup.questions]
+        console.log("service",questions)
         return [questions,undefined]
 
       }catch (e) {
-        return [undefined,e]
         console.error("Error fetching Questions",e)
+        return [undefined,e]
+
       }
 
 
