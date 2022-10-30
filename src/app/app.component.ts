@@ -6,7 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {QuestionService} from "../services/questionService";
 import {AppState} from "./state/app.state";
 import {Observable} from "rxjs";
-import {IQuestion} from "./models/questions.model";
+import {IQuestion, QuestionTypeEnum} from "./models/questions.model";
 
 @Component({
   selector: 'app-root',
@@ -47,7 +47,14 @@ export class AppComponent {
   constructor(private _formBuilder: FormBuilder,private store: Store ) {
 
   }
+  showNextButton(question:IQuestion):boolean{
+    // if we have multi select
+    if(!(question.type===QuestionTypeEnum.MULTIPLE_CHECKBOX_CHOICE)){
+      return true
+    }
+    return question.userAnswer.length>0
 
+  }
 
   ngOnInit() {
 

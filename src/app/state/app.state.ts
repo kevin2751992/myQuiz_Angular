@@ -126,10 +126,11 @@ export class AppState {
     let questions = ctx.getState().questions;
     questions?.forEach((q: IQuestion) => {
       if(!q.userAnswer) return;
-      //Check if we have multiple answers
-        if (q.userAnswer?.points) {
-        userPoints = userPoints + q.userAnswer.points
-      }
+      q.userAnswer.forEach((answer)=>{
+        userPoints = userPoints + answer.points!
+      })
+
+
     })
     ctx.patchState({
       userPoints: userPoints

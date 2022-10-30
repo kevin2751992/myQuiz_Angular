@@ -8,15 +8,17 @@
       "selectionMode": "undefined",
       "correctIndex": "undefined",
       "maxPoints": 0,
+      "userAnswer": [],
       "answers": []
     },
     {
-      "title": "Question 2",
+      "title": "Question 1",
       "question": "How often do you visit this website?",
       "type": "SINGLE_RADIO_SELECTION",
       "selectionMode": "SINGLE",
       "correctIndex": "undefined",
       "maxPoints": 5,
+      "userAnswer": [],
       "answers": [
         {
           "value": "Often",
@@ -33,11 +35,12 @@
     },
     {
       "title": "Question 2",
-      "question": "How often do you visit this website?",
+      "question": "Please select atleast one option",
       "type": "MULTIPLE_CHECKBOX_CHOICE",
       "selectionMode": "Multi",
       "correctIndex": "undefined",
       "maxPoints": 6,
+      "userAnswer": [],
       "answers": [
         {
           "value": "Option 1",
@@ -49,6 +52,33 @@
         {
           "value": "Option 3",
           "points": 2
+        }
+      ]
+    },
+    {
+      "title": "Question 3",
+      "question": "Where are you from?",
+      "type": "DROPDOWN",
+      "selectionMode": "SINGLE",
+      "correctIndex": "undefined",
+      "maxPoints": 5,
+      "userAnswer": [],
+      "answers": [
+        {
+          "value": "Germany",
+          "points": 3
+        },
+        {
+          "value": "Sweden",
+          "points": 5
+        },
+        {
+          "value": "Italy",
+          "points": 5
+        },
+        {
+          "value": "Spain",
+          "points": 3
         }
       ]
     }

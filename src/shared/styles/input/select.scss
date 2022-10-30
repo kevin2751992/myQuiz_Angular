@@ -1,0 +1,23 @@
+.select{
+  width: 100%;
+  background: black;
+  color: white;
+  .option{
+    background-color: red;
+  }
+}
+.select-panel{
+  background: black;
+  color: white;
+  border-radius: 0;
+}
+::ng-deep .mat-select-content{
+
+  background-color: red;
+  font-size: 10px;
+}
+.cdk-overlay-container .cdk-overlay-pane .select-panel{
+  background: black;
+  color: white;
+  border-radius: 0;
+}

@@ -8,7 +8,7 @@ export interface IQuestion {
   correctIndex?:number;
   answers?:IAnswer[];
   maxPoints:number;
-  userAnswer?:IAnswer;
+  userAnswer: IAnswer[];
 }
 export enum QuestionTypeEnum{
   MULTIPLE_CHECKBOX_CHOICE="MULTIPLE_CHECKBOX_CHOICE",
@@ -18,7 +18,7 @@ export enum QuestionTypeEnum{
 }
 export interface IAnswer{
   value:string;
-  points?:number;
+  points:number;
 }
 export enum SelectionModeEnum{
   SINGLE="SINGLE",

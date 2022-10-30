@@ -1,0 +1,16 @@
+<div class="result-board">
+  <div *ngIf="{maxPoints: $maxPoints | async,userPoints: $userPoints | async} as ResultData">
+    <div class="col-container alignItems-center spacer">
+      <span class="label spacer">Result</span>
+      <div class="col-container alignItems-center">
+        <h2>Your Score</h2>
+        <span>Kevin</span>
+      </div>
+      <div class="col-container alignItems-center points-label-container">
+        <h2>{{ ResultData.userPoints }}</h2>
+        <span class="points-label">Points</span>
+      </div>
+      <mat-progress-bar class="result-bar" mode="determinate" value="{{calcProgressValue(ResultData.userPoints,ResultData.maxPoints)}}"></mat-progress-bar>
+    </div>
+  </div>
+</div>

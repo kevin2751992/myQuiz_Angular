@@ -6,7 +6,6 @@
     </div>
     <div *ngIf="isTypeTextField(question.type)" class="col-container alignItems-center spacerMd">
       <!--QuestionType TextInput-->
-      <mat-label *ngIf="question.label" mat-label>First name</mat-label>
       <input class="text-input" matInput placeholder="{{question.hint}}"
              (cdkAutofill)="userAnswer = $event.isAutofilled"/>
     </div>
@@ -15,16 +14,30 @@
       <mat-radio-group class="row-container center spacerMd" aria-label="Select an option">
         <mat-radio-button (change)="selected(option,i)" *ngFor="let option of question.answers, let i=index"
                           value="{{i}}">{{option.value}}</mat-radio-button>
-        </mat-radio-group>
+      </mat-radio-group>
     </div>
     <!--QuestionType MultipleChoice-->
     <div *ngIf="isTypeMULTIPLE_CHECKBOX_CHOICE(question.type)">
       <div class="row-container center spacerMd">
-        <mat-checkbox class="example-margin" *ngFor="let option of question.answers, let i=index" >
+        <mat-checkbox (change)="handleCheckboxChange($event,option)" class="example-margin"
+                      *ngFor="let option of question.answers, let i=index">
           {{option.value}}
         </mat-checkbox>
       </div>
     </div>
+    <div *ngIf="isDROPDOWN(question.type)">
+
+      <div class="row-container center spacerMd">
+          <select #answer class="select" (change)="selectChange(answer.value)">
+            <option [ngValue]="null">Please choose your country</option>
+            <option (change)="selected(option,i)"  *ngFor="let option of question.answers, let i=index" style="background-color: red" class="option"
+                    value="{{option.value}}">{{option.value}}</option>
+          </select>
+
+      </div>
+    </div>
+
+
   </div>
 
 </div>
