@@ -45,12 +45,14 @@ export class AppState{
   }
   @Action(Questions.SetQuestions)
   setQuestions(ctx:StateContext<AppStateModel>,{payload}:Questions.SetQuestions){
+    console.log("test")
     ctx.patchState({
       questions:[...payload]
     })
   }
   @Action(Questions.SetQuestions)
   setQuestion(ctx:StateContext<AppStateModel>,{payload}:Questions.SetQuestion){
+    console.log("here1")
     let currstate =ctx.getState()
     let tmpCopy:IQuestion[]=[];
     if(currstate.questions){
@@ -61,10 +63,12 @@ export class AppState{
     ctx.patchState({
       questions:[...tmpCopy]
     })
+    console.log("updated Questions",ctx.getState())
   }
 
   @Action(Questions.FetchQuestions)
   async fetchQuestions(ctx:StateContext<AppStateModel>){
+    console.log("here")
     let [questions,error]=await this.questionService.fetchQuestions();
     if(error){
       ctx.patchState({

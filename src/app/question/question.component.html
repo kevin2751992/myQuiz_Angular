@@ -1,8 +1,8 @@
 
 <div class="question-container">
   <div *ngIf="question">
-    <div class="col-container alignItems-center spacerMd">
-        <p class="label">{{question.title}}</p>
+    <div class="col-container alignItems-center spacer">
+        <span class="label">{{question.title}}</span>
         <h2>{{question.question}}</h2>
     </div>
     <div *ngIf="isTypeTextField(question.type)" class="col-container alignItems-center spacerMd">
@@ -14,7 +14,7 @@
       <!--QuestionType SingleSelection-->
       <div *ngIf="isSINGLE_RADIO_SELECTION(question.type)" >
         <mat-radio-group class="row-container center spacerMd" aria-label="Select an option" >
-          <mat-radio-button (change)="selected($event,option)" *ngFor="let option of question.answers, let i=index" value="{{i}}">{{option.value}}</mat-radio-button>
+          <mat-radio-button (change)="selected(option,i)" *ngFor="let option of question.answers, let i=index" value="{{i}}">{{option.value}}</mat-radio-button>
         </mat-radio-group>
       </div>
       <!--QuestionType MultipleChoice-->

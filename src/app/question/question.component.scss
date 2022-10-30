@@ -1,6 +1,7 @@
 .question-container{
   .label{
-    font-size: var(--fs-h3);
+    font-size: var(--fs-p);
+    text-transform: uppercase;
   }
   input{
     background-color: var(--primary-surface);

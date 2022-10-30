@@ -1,8 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IAnswer, IQuestion, QuestionTypeEnum} from "../models/questions.model";
-import {Select} from "@ngxs/store";
-import {AppState} from "../state/app.state";
+import {Select, Store} from "@ngxs/store";
+import {Questions} from "../actions/app.actions";
 import {Observable} from "rxjs";
+import {AppState} from "../state/app.state";
+
 
 
 @Component({
@@ -17,7 +19,7 @@ export class QuestionComponent implements OnInit {
   userAnswer:any;
   //question:IQuestion|undefined
   //question:IQuestion;
-  constructor() {
+  constructor(private store: Store ) {
 
   }
 
@@ -32,17 +34,29 @@ export class QuestionComponent implements OnInit {
   isSINGLE_RADIO_SELECTION(type:QuestionTypeEnum):boolean{
     return type===QuestionTypeEnum.SINGLE_RADIO_SELECTION
   }
-
-  ngOnInit(): void {
-    console.log("q",this.question)
+  ngOnChanges(){
     this.$questions?.subscribe(result=>{
+      console.log("questions were updated",result)
       //this.question=result[this.index];
 
     })
   }
 
+  ngOnInit(): void {
+    console.log("q",this.question)
+    this.$questions?.subscribe(result=>{
+      console.log("questions were updated",result)
 
-  selected(ecent:any,option: IAnswer) {
+
+    })
+  }
+
+
+  selected(option: IAnswer, index:number) {
+    if(!option || !this.question) return;
     console.log("selected",option);
+    this.question.userAnswer=option;
+    console.log("updated Question",this.question)
+    this.store.dispatch(new Questions.SetQuestion({updatedQuestion:this.question, index:index}));
   }
 }

@@ -1,10 +1,10 @@
 
 import { Component } from '@angular/core';
-import {Actions, Select, Selector, Store} from '@ngxs/store';
+import {Select, Store} from '@ngxs/store';
 import {Questions} from "./actions/app.actions";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {QuestionService} from "../services/questionService";
-import {AppState, AppStateModel} from "./state/app.state";
+import {AppState} from "./state/app.state";
 import {Observable} from "rxjs";
 import {IQuestion} from "./models/questions.model";
 
@@ -44,17 +44,18 @@ export class AppComponent {
 
 
 
-  constructor(private _formBuilder: FormBuilder,private store: Store ,actions$:Actions) {
+  constructor(private _formBuilder: FormBuilder,private store: Store ) {
 
   }
 
 
   ngOnInit() {
+
     this.store.dispatch(new Questions.FetchQuestions()).subscribe(result=>{
       console.log("q",result);
       this.questions=result;
     })
-
+    this.store.dispatch(new Questions.SetQuestions(this.questions))
   }
 
 }

@@ -20,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 //Own Components
 import { QuestionComponent } from './question/question.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppState } from './state/app.state'; // Import APPState
+import { AppState } from './state/app.state';
+
 
 
 @NgModule({
@@ -28,7 +29,6 @@ import { AppState } from './state/app.state'; // Import APPState
     AppComponent,
     QuestionComponent,
     DashboardComponent,
-
   ],
   imports: [
     BrowserModule,
