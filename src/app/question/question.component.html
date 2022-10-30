@@ -10,25 +10,20 @@
       <input class="text-input" matInput placeholder="{{question.hint}}"
              (cdkAutofill)="userAnswer = $event.isAutofilled"/>
     </div>
-    <div *ngIf="isMULTIPLE_CHECKBOX_CHOICE(question.type)" class="col-container alignItems-center spacerMd">
-      <!--QuestionType TextInput-->
-      <mat-label *ngIf="question.label" mat-label>First name</mat-label>
-      <input class="text-input" matInput placeholder="{{question.hint}}"
-             (cdkAutofill)="userAnswer = $event.isAutofilled"/>
-    </div>
-
     <!--QuestionType SingleSelection-->
     <div *ngIf="isSINGLE_RADIO_SELECTION(question.type)">
       <mat-radio-group class="row-container center spacerMd" aria-label="Select an option">
         <mat-radio-button (change)="selected(option,i)" *ngFor="let option of question.answers, let i=index"
                           value="{{i}}">{{option.value}}</mat-radio-button>
-      </mat-radio-group>
+        </mat-radio-group>
     </div>
     <!--QuestionType MultipleChoice-->
     <div *ngIf="isTypeMULTIPLE_CHECKBOX_CHOICE(question.type)">
-      <mat-label *ngIf="question.label" mat-label>First name</mat-label>
-      <input class="text-input" matInput placeholder="{{question.hint}}"
-             (cdkAutofill)="userAnswer = $event.isAutofilled"/>
+      <div class="row-container center spacerMd">
+        <mat-checkbox class="example-margin" *ngFor="let option of question.answers, let i=index" >
+          {{option.value}}
+        </mat-checkbox>
+      </div>
     </div>
   </div>
 

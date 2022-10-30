@@ -15,6 +15,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -49,7 +51,8 @@ import { ResultdashboardComponent } from './resultdashboard/resultdashboard.comp
     TextFieldModule,
     FormsModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
