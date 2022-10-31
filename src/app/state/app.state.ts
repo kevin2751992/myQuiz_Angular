@@ -96,8 +96,9 @@ export class AppState {
 
   @Action(Questions.SetQuestions)
   setQuestion(ctx: StateContext<AppStateModel>, {payload}: Questions.SetQuestion) {
-    console.log("here1")
+
     let currstate = ctx.getState()
+    console.log("currstate",currstate)
     let tmpCopy: IQuestion[] = [];
     if (currstate.questions) {
       let tmpCopy = [...currstate.questions];
@@ -108,7 +109,6 @@ export class AppState {
       questions: [...tmpCopy],
       maxSteps:tmpCopy.length
     })
-    console.log("updated Questions", ctx.getState())
   }
   //Fetch Questions from defined Endpoint and Calculates the max possible Points u can get in current quiz
   @Action(Questions.FetchQuestions)

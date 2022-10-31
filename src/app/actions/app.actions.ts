@@ -10,7 +10,7 @@ export namespace Questions {
     }
   }
   export class SetUserName {
-    static readonly type = '[APP] set question'
+    static readonly type = '[APP] set username'
 
     constructor(public payload:string ) {
 

@@ -55,8 +55,6 @@ export class QuestionComponent implements OnInit {
     if(!option || !this.question) return;
     console.log("selected",option);
     this.question.userAnswer=[option];
-    console.log("updated Question",this.question);
-    console.log("updated Question",index)
     this.store.dispatch(new Questions.SetQuestion({updatedQuestion:this.question, index:this.index}));
   }
 
