@@ -1,15 +1,29 @@
+#angular-quiz{
+  .mat-form-field-appearance-fill .mat-form-field-infix{
+    border-bottom: solid;
+  }
+}
 .question-container{
+  .mat-form-field-appearance-fill .mat-form-field-infix{
+    border-bottom: solid;
+  }
   .label{
     font-size: var(--fs-p);
     text-transform: uppercase;
   }
+  input:focus {outline:0;} // not recommended
   input{
     background-color: var(--primary-surface);
     border:none;
     border-bottom: 1px solid grey;
     color:white;
     width: 80%;
+    & :focus{
+      color:red;
+      border: none;
+    }
   }
+
   .mat-input-element::placeholder {
     color:white
   }

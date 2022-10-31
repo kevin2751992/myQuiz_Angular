@@ -1,19 +1,25 @@
 /* MOBILE Styling*/
 
-.dashboard-container{
-  h1{
+.dashboard-container {
+  h1 {
     font-size: 44px;
     line-height: 3rem;
   }
-  p{
+
+  p {
     //margin-block: var(--spacer);
-    margin:15px 0 var(--spacer) 0px ;
+    margin: 15px 0 var(--spacer) 0px;
   }
+
+
 }
 
 @media (min-width: 1200px) {
-  p{
+  p {
     //margin-block: var(--spacer);
-    margin:15px 0 var(--spacerLg) 0px ;
+    margin: 15px 0 var(--spacer) 0px;
+  }
+  .header {
+    margin-bottom: var(--spacerMd);
   }
 }

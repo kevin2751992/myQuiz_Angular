@@ -1,4 +1,5 @@
 <div id="angular-quiz">
+  <div *ngIf="{userName: $username | async } as UserData" class="userLabel">Survey for: <span>{{UserData.userName}}</span></div>
   <mat-stepper  linear #stepper>
     <mat-step>
       <div class="content-wrapper-container">
@@ -16,21 +17,23 @@
     </mat-step>
     <ng-container *ngFor="let question of $questions|async, let i=index">
       <mat-step>
-        <div class="col-container alignItems-center spacerMd">
-          <app-question [index]="i" [question]="question"></app-question>
-          <button *ngIf="showNextButton(question)" class="default-button light-theme" (click)="updateUserPoints()" mat-button matStepperNext>
-            <div class="row-container center spacerSm">
-              <span>Next</span>
-              <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
-            </div>
-          </button>
-          <button class="default-button" mat-button matStepperPrevious>
-            <div class="row-container center">
-              <mat-icon class="next-icon" aria-label="Example home icon">arrow_back</mat-icon>
-              <span style="font-size: 10px">Back</span>
-            </div>
-          </button>
+        <div class="content-wrapper-container">
+          <div class="col-container alignItems-center spacerMd">
+            <app-question [index]="i" [question]="question"></app-question>
+            <button *ngIf="showNextButton(question)" class="default-button light-theme" (click)="updateUserPoints()" mat-button matStepperNext>
+              <div class="row-container center spacerSm">
+                <span>Next</span>
+                <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
+              </div>
+            </button>
+            <button style="margin-top: -30px" class="default-button" mat-button matStepperPrevious>
+              <div class="row-container center">
+                <mat-icon class="next-icon" aria-label="Example home icon">arrow_back</mat-icon>
+                <span style="font-size: 10px; ">Back</span>
+              </div>
+            </button>
 
+          </div>
         </div>
       </mat-step>
     </ng-container>

@@ -87,4 +87,9 @@ export class QuestionComponent implements OnInit {
     }
     this.store.dispatch(new Questions.SetQuestion({updatedQuestion:this.question, index:this.index}));
   }
+
+  setUserName(input:any) {
+    console.log("hellø")
+    this.store.dispatch(new Questions.SetUserName(input.value))
+  }
 }

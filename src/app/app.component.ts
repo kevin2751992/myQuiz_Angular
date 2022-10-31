@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import {Select, Store} from '@ngxs/store';
-import {Questions} from "./actions/app.actions";
+import {Questions, Stepps} from "./actions/app.actions";
 import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {QuestionService} from "../services/questionService";
 import {AppState} from "./state/app.state";
@@ -22,6 +22,7 @@ export class AppComponent {
   //State
   @Select() app$: Observable<AppState>| undefined
   @Select(AppState.getQuestions) $questions: Observable<IQuestion[]>|undefined;
+  @Select(AppState.getUsername) $username: Observable<string>|undefined;
 
 
   mainFormGroup = this._formBuilder.group({
@@ -68,6 +69,7 @@ export class AppComponent {
     this.store.dispatch(new Questions.CalculateUserPoints).subscribe(result=>{
       console.log("updated",result)
     })
+    this.store.dispatch(new Stepps.IncrementStep())
   }
 }
 

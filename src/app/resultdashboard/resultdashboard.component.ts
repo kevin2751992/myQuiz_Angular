@@ -14,6 +14,7 @@ export class ResultdashboardComponent implements OnInit {
 
   @Select(AppState.getUserPoints) $userPoints: Observable<number> | undefined;
   @Select(AppState.getMaxPoints) $maxPoints: Observable<number> | undefined;
+  @Select(AppState.getUsername) $username: Observable<number> | undefined;
 
   maxPoints:number=0;
   userPoints:number=0;

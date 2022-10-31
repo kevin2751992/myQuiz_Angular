@@ -1,6 +1,6 @@
 import {State, Action, StateContext, Selector} from '@ngxs/store';
 import {IAnswer, IQuestion} from './../models/questions.model'
-import { Questions} from '../actions/app.actions'
+import {Questions, Stepps} from '../actions/app.actions'
 import {Injectable} from "@angular/core";
 import {QuestionService} from "../../services/questionService";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -22,6 +22,9 @@ export class AppStateModel {
   maxPoints: number = 0;
   steps: FormGroup<{ grpName: FormControl<string | null> }>[] | undefined = [];
   appstate: AppStateEnum = AppStateEnum.Loading;
+  username:string|undefined;
+  currentStep:number=0;
+  maxSteps:number=0
 
 }
 
@@ -32,6 +35,9 @@ export class AppStateModel {
     steps: [],
     userPoints: 0,
     maxPoints: 0,
+    username:undefined,
+    currentStep:0,
+    maxSteps:0,
     appstate: AppStateEnum.Loading
   }
 })
@@ -45,6 +51,10 @@ export class AppState {
   @Selector()
   static getQuestions(state: AppStateModel) {
     return state.questions
+  }
+  @Selector()
+  static getUsername(state: AppStateModel) {
+    return state.username
   }
 
   @Selector()
@@ -70,6 +80,19 @@ export class AppState {
       questions: [...payload]
     })
   }
+  @Action(Questions.SetUserName)
+  setUserName(ctx: StateContext<AppStateModel>, {payload}: Questions.SetUserName) {
+    console.log("payload",payload)
+    ctx.patchState({
+      username:payload })
+  }
+  @Action(Stepps.IncrementStep)
+  incrementQuestions(ctx: StateContext<AppStateModel>, {payload}: Questions.SetQuestions) {
+    let step= ctx.getState().currentStep;
+    ctx.patchState({
+      currentStep:step+1
+    })
+  }
 
   @Action(Questions.SetQuestions)
   setQuestion(ctx: StateContext<AppStateModel>, {payload}: Questions.SetQuestion) {
@@ -82,7 +105,8 @@ export class AppState {
     }
     console.log("Update Question", tmpCopy)
     ctx.patchState({
-      questions: [...tmpCopy]
+      questions: [...tmpCopy],
+      maxSteps:tmpCopy.length
     })
     console.log("updated Questions", ctx.getState())
   }

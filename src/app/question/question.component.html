@@ -6,8 +6,10 @@
     </div>
     <div *ngIf="isTypeTextField(question.type)" class="col-container alignItems-center spacerMd">
       <!--QuestionType TextInput-->
-      <input class="text-input" matInput placeholder="{{question.hint}}"
-             (cdkAutofill)="userAnswer = $event.isAutofilled"/>
+
+        <input #value class="text-input" (change)="setUserName(value)" matInput placeholder="{{question.hint}}"
+               (cdkAutofill)="userAnswer = $event.isAutofilled"/>
+
     </div>
     <!--QuestionType SingleSelection-->
     <div *ngIf="isSINGLE_RADIO_SELECTION(question.type)">
@@ -28,11 +30,12 @@
     <div *ngIf="isDROPDOWN(question.type)">
 
       <div class="row-container center spacerMd">
-          <select #answer class="select" (change)="selectChange(answer.value)">
-            <option [ngValue]="null">Please choose your country</option>
-            <option (change)="selected(option,i)"  *ngFor="let option of question.answers, let i=index" style="background-color: red" class="option"
-                    value="{{option.value}}">{{option.value}}</option>
-          </select>
+        <select #answer class="select" (change)="selectChange(answer.value)">
+          <option [ngValue]="null">Please choose your country</option>
+          <option (change)="selected(option,i)" *ngFor="let option of question.answers, let i=index"
+                  style="background-color: red" class="option"
+                  value="{{option.value}}">{{option.value}}</option>
+        </select>
 
       </div>
     </div>
