@@ -41,11 +41,6 @@
     margin: auto;
   }
 }
-
-
-.content-wrapper-container {
-
-}
 .stepper {
   background-color: black;
   color: white;
@@ -55,7 +50,23 @@
   position: relative;
 
 }
+.progressbar-container{
+  width: 90%;
+  margin: auto;
+  position: initial;
+  .progress-label{
+    width: fit-content;
+    margin-left: auto;
+    color: grey;
+  }
+}
+
+
 @media (min-width: 1200px) {
+  .progressbar-container{
+    position: absolute;
+    bottom: var(--spacerMd);
+  }
   #angular-quiz{
    padding: var(--spacerLg);
     border: solid 1px #424242;
@@ -74,10 +85,6 @@
     -ms-transform: translatey(-50%);
     transform: translateX(-50%);
     padding: 0;
-  }
-
-  .content-wrapper-container {
-
   }
   .userLabel{
     width: fit-content;

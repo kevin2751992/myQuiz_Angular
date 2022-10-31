@@ -62,6 +62,10 @@ export class AppState {
     if (!state.questions || index > state.questions.length) return;
     return state.questions[index]
   }
+  @Selector()
+  static getCurrentStep(state:AppStateModel) {
+    return state.currentStep
+  }
 
   @Selector()
   static getUserPoints(state: AppStateModel) {
@@ -72,6 +76,8 @@ export class AppState {
   static getMaxPoints(state: AppStateModel) {
     return state.maxPoints
   }
+
+
 
   @Action(Questions.SetQuestions)
   setQuestions(ctx: StateContext<AppStateModel>, {payload}: Questions.SetQuestions) {
@@ -87,8 +93,10 @@ export class AppState {
       username:payload })
   }
   @Action(Stepps.IncrementStep)
-  incrementQuestions(ctx: StateContext<AppStateModel>, {payload}: Questions.SetQuestions) {
+  incrementQuestions(ctx: StateContext<AppStateModel>) {
+    console.log("increment")
     let step= ctx.getState().currentStep;
+    step?step=step:step=0;
     ctx.patchState({
       currentStep:step+1
     })
@@ -107,7 +115,6 @@ export class AppState {
     console.log("Update Question", tmpCopy)
     ctx.patchState({
       questions: [...tmpCopy],
-      maxSteps:tmpCopy.length
     })
   }
   //Fetch Questions from defined Endpoint and Calculates the max possible Points u can get in current quiz
@@ -121,10 +128,13 @@ export class AppState {
       })
       return
     }
-    ctx.patchState({
-      appstate: AppStateEnum.Success,
-      questions: questions
-    })
+    if(questions && questions.length>0){
+      ctx.patchState({
+        appstate: AppStateEnum.Success,
+        questions: questions,
+        maxSteps:(questions?.length)-1
+      })
+    }
     //ctx.dispatch(new CalculateMaxPoints())
   }
 

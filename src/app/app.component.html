@@ -10,7 +10,6 @@
               <span>Start the Survey</span>
               <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
             </div>
-
           </button>
         </div>
       </div>
@@ -20,7 +19,7 @@
         <div class="content-wrapper-container">
           <div class="col-container alignItems-center spacerMd">
             <app-question [index]="i" [question]="question"></app-question>
-            <button *ngIf="showNextButton(question)" class="default-button light-theme" (click)="updateUserPoints()" mat-button matStepperNext>
+            <button *ngIf="showNextButton(question)" class="default-button light-theme" (click)="nextQuestion()" mat-button matStepperNext>
               <div class="row-container center spacerSm">
                 <span>Next</span>
                 <mat-icon class="next-icon" aria-label="Example home icon">arrow_circle_right</mat-icon>
@@ -46,5 +45,13 @@
       </div>
     </mat-step>
   </mat-stepper>
+  <div *ngIf="{step: $currentStep | async,questions: $questions | async} as ResultData">
+    <div *ngIf="showProgressBar(ResultData)" class="progressbar-container">
+      <div class="progress-label">{{showProgressLabel(ResultData)}}</div>
+      <mat-progress-bar class="step-bar"  value="{{calcProgressValue(ResultData)}}"></mat-progress-bar>
+
+    </div>
+  </div>
+
 </div>
 

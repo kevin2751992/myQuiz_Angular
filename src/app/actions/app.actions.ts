@@ -56,8 +56,8 @@ export namespace Questions {
 export namespace Stepps {
   export class IncrementStep {
     static readonly type = "[APP] increment step ";
-    constructor() {
+    constructor( ) {
+
     }
   }
-
 }
